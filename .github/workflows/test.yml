@@ -1,7 +1,6 @@
 name: "Probando Var de Env"
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       test_env:
