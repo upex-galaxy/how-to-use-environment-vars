@@ -44,9 +44,6 @@ module.exports = defineConfig({
     watchForFileChanges: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      on('before:run', ()=>{
-        console.log('This is the Env selected: ', ENV)
-      })
     },
   },
   env: {
