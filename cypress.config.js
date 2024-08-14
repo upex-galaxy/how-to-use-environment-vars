@@ -22,6 +22,7 @@ if(!password) throw new Error(`No password found`)
 
 module.exports = defineConfig({
   defaultCommandTimeout: 5000,
+  pageLoadTimeout: 10000,
   e2e: {
     watchForFileChanges: false,
     baseUrl: baseURL,
