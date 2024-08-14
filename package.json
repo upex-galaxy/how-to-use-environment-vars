@@ -1,0 +1,11 @@
+{
+  "name": "cypress-env-variables",
+  "scripts": {
+    "test": "cypress open",
+    "test:ci": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^13.13.2",
+    "dotenv": "^16.4.5"
+  }
+}

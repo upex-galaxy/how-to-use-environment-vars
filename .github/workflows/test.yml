@@ -1,0 +1,39 @@
+name: "Probando Var de Env"
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_env:
+        description: '🧪 Test Env to run on'
+        required: true
+        default: 'qa'
+        type: choice
+        options:
+        - qa
+        - uat
+        - prod
+
+env:
+  TEST_ENV: uat # manual option
+  # directly from secret: 
+  QA_USERNAME: ${{ secrets.QA_USERNAME }}
+  UAT_USERNAME: ${{ secrets.UAT_USERNAME }}
+  PROD_USERNAME: ${{ secrets.PROD_USERNAME }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+
+jobs:
+  ExecuteTestEnv:
+    runs-on: ubuntu-latest
+
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+
+    steps:
+    - name: Clonar el Repo
+      uses: actions/checkout@v4
+
+    - name: Instalar DevDependencies
+      run: npm ci
+
+    - name: Run Cypress Tests
+      run: npm run test:ci
