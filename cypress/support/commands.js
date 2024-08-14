@@ -15,7 +15,16 @@ beforeEach(() => {
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+//* cy.login()
+Cypress.Commands.add('login', () => {
+    cy.session('login', ()=>{
+        cy.visit('/')
+        cy.get('[data-test="username"]').type(Cypress.env('users').username)
+        cy.get('[data-test="password"]').type(Cypress.env('users').password)
+        cy.get('[data-test="login-button"]').click()
+        cy.get('#inventory_container').should('be.visible')
+    })
+ })
 //
 //
 // -- This is a child command --

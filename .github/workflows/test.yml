@@ -12,14 +12,21 @@ on:
         - qa
         - uat
         - prod
-
+      premium:
+        description: '🔒 Premium User Tests'
+        required: true
+        default: false
+        type: boolean
 env:
   TEST_ENV: uat # manual option
   # directly from secret: 
-  QA_USERNAME: ${{ secrets.QA_USERNAME }}
-  UAT_USERNAME: ${{ secrets.UAT_USERNAME }}
-  PROD_USERNAME: ${{ secrets.PROD_USERNAME }}
-  PASSWORD: ${{ secrets.PASSWORD }}
+  QA_USERNAME_FREE: ${{ secrets.QA_USERNAME_FREE }}
+  QA_USERNAME_PREM: ${{ secrets.QA_USERNAME_PREM }}
+  UAT_USERNAME_FREE: ${{ secrets.UAT_USERNAME_FREE }}
+  UAT_USERNAME_PREM: ${{ secrets.UAT_USERNAME_PREM }}
+  PROD_USERNAME_FREE: ${{ secrets.PROD_USERNAME_FREE }}
+  PROD_USERNAME_PREM: ${{ secrets.PROD_USERNAME_PREM }}
+  IS_PREMIUM: ${{ github.event.inputs.premium }}
 
 jobs:
   ExecuteTestEnv:
